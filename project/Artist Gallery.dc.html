@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Caveat:wght@500;600&amp;family=Jost:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    body { margin: 0; background: #F1EBE0; }
+    ::selection { background: #3F4A2A; color: #F1EBE0; }
+  </style>
+</helmet>
+
+<div style="background:#F1EBE0; color:#2C2A21; font-family:'Jost',sans-serif; min-height:100vh;">
+
+  <!-- SALE BANNER -->
+  <div style="background:#3F4A2A; color:#F1EBE0; text-align:center; padding:10px 20px; font-size:12px; letter-spacing:1.5px; text-transform:uppercase;">50% Off Everything — First Month Only</div>
+
+  <!-- NAV -->
+  <div style="position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:20px 48px; background:rgba(241,235,224,0.94); backdrop-filter:blur(6px); border-bottom:1px solid #DED2BC;">
+    <img src="assets/logo-green.png" alt="S. Chontow" style="height:56px; width:auto; object-fit:contain;">
+    <div style="display:flex; gap:38px; font-size:13px; letter-spacing:1.5px; text-transform:uppercase; color:#3F4A2A;">
+      <a href="#hero" style="color:#3F4A2A; text-decoration:none;" style-hover="color:#223a5e;">Home</a>
+      <a href="#about" style="color:#3F4A2A; text-decoration:none;" style-hover="color:#223a5e;">About</a>
+      <a href="#gallery" style="color:#3F4A2A; text-decoration:none;" style-hover="color:#223a5e;">Gallery</a>
+      <a href="#commission" style="color:#3F4A2A; text-decoration:none;" style-hover="color:#223a5e;">Commission</a>
+      <a href="#contact" style="color:#3F4A2A; text-decoration:none;" style-hover="color:#223a5e;">Contact</a>
+    </div>
+    <a href="#contact" style="padding:12px 26px; background:#3F4A2A; color:#F1EBE0; text-decoration:none; font-size:12px; letter-spacing:2px; text-transform:uppercase;" style-hover="background:#33401f;">Inquire</a>
+  </div>
+
+  <!-- HERO -->
+  <div id="hero" style="position:relative; width:100%; height:720px; overflow:hidden;">
+    <img src="assets/hero-field.png" alt="Sarah painting at her easel in a misty field" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 38%;">
+    <div style="position:absolute; inset:0; background:linear-gradient(90deg, rgba(20,18,10,0.42) 0%, rgba(20,18,10,0.22) 32%, rgba(20,18,10,0.05) 55%, transparent 70%);"></div>
+    <div style="position:relative; height:100%; display:flex; flex-direction:column; justify-content:center; gap:18px; max-width:1400px; margin:0 auto; padding:0 48px;">
+      <h1 style="font-family:'Playfair Display',serif; font-weight:600; font-size:52px; line-height:1.15; margin:0; color:#FBF8F1; max-width:480px; text-shadow:0 2px 14px rgba(0,0,0,0.25);">Capturing<br>Soul &amp; Story</h1>
+      <div style="font-family:'Caveat',cursive; font-size:36px; color:#FBF8F1; margin-top:-8px; text-shadow:0 2px 14px rgba(0,0,0,0.25);">through art</div>
+      <p style="font-size:15px; line-height:1.8; color:#F1EBE0; margin:0; max-width:340px; text-shadow:0 1px 8px rgba(0,0,0,0.25);">Original oil paintings inspired by faith, family, and the beauty of everyday life.</p>
+      <a href="#gallery" style="margin-top:10px; align-self:flex-start; color:#FBF8F1; text-decoration:none; font-size:12px; letter-spacing:2px; text-transform:uppercase; border-bottom:1px solid #FBF8F1; padding-bottom:6px;" style-hover="color:#E4DFCE; border-color:#E4DFCE;">Explore Gallery</a>
+    </div>
+  </div>
+
+  <!-- FEATURED PAINTINGS -->
+  <div style="padding:20px 48px 90px; max-width:1400px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:48px; display:flex; flex-direction:column; align-items:center; gap:8px;">
+      <h2 style="font-family:'Playfair Display',serif; font-weight:500; font-size:15px; letter-spacing:3px; text-transform:uppercase; color:#2C2A21; margin:0;">Featured Paintings</h2>
+      <span style="display:flex; gap:6px;"><span style="width:5px; height:5px; border-radius:50%; background:#3F4A2A;"></span><span style="width:5px; height:5px; border-radius:50%; background:#3F4A2A;"></span><span style="width:5px; height:5px; border-radius:50%; background:#3F4A2A;"></span></span>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); gap:22px;">
+      <sc-for list="{{ featured }}" as="p" hint-placeholder-count="6">
+        <a href="#gallery" style="text-decoration:none; color:inherit; display:flex; flex-direction:column; gap:12px;">
+          <div style="position:relative; width:100%; aspect-ratio:1/1; overflow:hidden;">
+            <img src="{{ p.src }}" alt="{{ p.title }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transform:scale(1.32); transform-origin:center;">
+            <sc-if value="{{ p.hoverSrc }}">
+              <img src="{{ p.hoverSrc }}" alt="{{ p.title }}, shown in a room" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 0.45s ease;" style-hover="opacity:1;">
+            </sc-if>
+          </div>
+          <div style="text-align:center; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#4a4f34;">{{ p.title }}</div>
+        </a>
+      </sc-for>
+    </div>
+    <div style="display:flex; justify-content:center; margin-top:44px;">
+      <a href="#gallery" style="padding:14px 34px; border:1px solid #3F4A2A; color:#3F4A2A; text-decoration:none; font-size:12px; letter-spacing:2px; text-transform:uppercase;" style-hover="background:#3F4A2A; color:#F1EBE0;">View Full Gallery</a>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div id="about" style="background:#E7DFCD; padding:100px 48px;">
+    <div style="max-width:1300px; margin:0 auto; display:grid; grid-template-columns:0.85fr 1fr 0.75fr; gap:56px; align-items:center;">
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div style="font-size:13px; letter-spacing:2px; text-transform:uppercase; color:#2C2A21;">About the Artist</div>
+        <div style="width:36px; height:1px; background:#3F4A2A;"></div>
+        <p style="font-size:14px; line-height:1.8; color:#6b6a5c; margin:0; max-width:280px;">I'm a self-taught artist painting from the heart. My work is inspired by faith, family, and the quiet, meaningful moments in Jewish life.</p>
+        <a href="#gallery" style="font-family:'Caveat',cursive; font-size:22px; color:#3F4A2A; text-decoration:none; margin-top:4px;" style-hover="color:#223a5e;">read my story →</a>
+      </div>
+      <div style="width:100%; aspect-ratio:4/3;">
+        <img src="assets/artist-painting-garden.png" alt="Sarah painting in her garden studio" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+      <div style="background:#DCD2B9; padding:40px 30px; display:flex; flex-direction:column; gap:14px;">
+        <p style="font-family:'Playfair Display',serif; font-style:italic; font-size:24px; line-height:1.4; color:#2C2A21; margin:0;">There is beauty in every story worth remembering.</p>
+        <span style="display:flex; gap:6px;"><span style="width:5px; height:5px; border-radius:50%; background:#3F4A2A;"></span><span style="width:5px; height:5px; border-radius:50%; background:#3F4A2A;"></span><span style="width:5px; height:5px; border-radius:50%; background:#3F4A2A;"></span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- GALLERY -->
+  <div id="gallery" style="padding:100px 48px; max-width:1320px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:56px; display:flex; flex-direction:column; align-items:center; gap:8px;">
+      <div style="font-size:12px; letter-spacing:3px; text-transform:uppercase; color:#8b8a72;">The Collection</div>
+      <h2 style="font-family:'Playfair Display',serif; font-weight:500; font-size:38px; color:#2C2A21; margin:0;">Available Paintings</h2>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:48px 36px;">
+      <sc-for list="{{ paintings }}" as="p" hint-placeholder-count="9">
+        <div style="display:flex; flex-direction:column; gap:14px; animation:fadeUp 0.5s ease both;">
+          <div style="position:relative; width:100%; aspect-ratio:1/1; background:#EDE6D6; border:1px solid #DED2BC; overflow:hidden;">
+            <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ p.slotId }}" shape="rect" placeholder="{{ p.placeholder }}" src="{{ p.src }}" hint-size="100%,100%" style="width:100%;height:100%;transform:scale(1.32);transform-origin:center;"></x-import>
+<sc-if value="{{ p.hoverSrc }}">
+              <img src="{{ p.hoverSrc }}" alt="{{ p.title }}, shown in a room" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 0.45s ease; pointer-events:auto;" style-hover="opacity:1;">
+            </sc-if>
+            <sc-if value="{{ p.sold }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute; top:14px; right:14px; background:#2C2A21; color:#F1EBE0; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; padding:6px 12px; pointer-events:none; z-index:2;">Sold</div>
+            </sc-if>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:4px;">
+            <div style="display:flex; align-items:baseline; justify-content:space-between; gap:12px;">
+              <h3 style="font-family:'Playfair Display',serif; font-weight:500; font-size:19px; margin:0; color:#2C2A21;">{{ p.title }}</h3>
+              <span style="display:flex; align-items:baseline; gap:8px; white-space:nowrap;">
+                <span style="font-size:13px; color:#9a9884; text-decoration:line-through;">{{ p.price }}</span>
+                <span style="font-size:15px; color:#223a5e; font-weight:500;">{{ p.salePrice }}</span>
+              </span>
+            </div>
+            <div style="font-size:12px; letter-spacing:0.5px; color:#8b8a72; text-transform:uppercase;">{{ p.medium }} · {{ p.size }}</div>
+            <p style="font-size:14px; line-height:1.6; color:#6b6a5c; margin:8px 0 10px;">{{ p.description }}</p>
+            <a href="#contact" style="align-self:flex-start; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:#4a4f34; text-decoration:none; border-bottom:1px solid #4a4f34; padding-bottom:2px;" style-hover="color:#223a5e; border-color:#223a5e;">Inquire</a>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- COMMISSION -->
+  <div id="commission" style="display:grid; grid-template-columns:1fr 1fr;">
+    <div style="width:100%; aspect-ratio:16/11;">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="commission-photo" shape="rect" placeholder="Drop a landscape or studio photo" hint-size="100%,100%" style="width:100%;height:100%;"></x-import>
+    </div>
+    <div style="background:#F1EBE0; display:flex; flex-direction:column; justify-content:center; gap:16px; padding:70px 60px;">
+      <h2 style="font-family:'Playfair Display',serif; font-weight:500; font-size:30px; margin:0; color:#2C2A21;">Commission a Painting</h2>
+      <div style="width:36px; height:1px; background:#3F4A2A;"></div>
+      <p style="font-size:14px; line-height:1.8; color:#6b6a5c; margin:0; max-width:380px;">Looking for something personal and meaningful? I take on a limited number of custom pieces each month.</p>
+      <a href="#contact" style="align-self:flex-start; margin-top:8px; padding:14px 30px; background:#3F4A2A; color:#F1EBE0; text-decoration:none; font-size:12px; letter-spacing:2px; text-transform:uppercase;" style-hover="background:#33401f;">Inquire Here</a>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact" style="padding:100px 48px 110px;">
+    <div style="max-width:560px; margin:0 auto; display:flex; flex-direction:column; gap:28px; text-align:center;">
+      <div>
+        <div style="font-size:12px; letter-spacing:3px; text-transform:uppercase; color:#8b8a72; margin-bottom:10px;">Get in Touch</div>
+        <h2 style="font-family:'Playfair Display',serif; font-weight:500; font-size:34px; margin:0 0 12px; color:#2C2A21;">Interested in a piece?</h2>
+        <p style="font-size:15px; line-height:1.7; color:#6b6a5c; margin:0;">Send a note with the painting's name and I'll get back to you within a day or two about pricing, shipping, and availability.</p>
+        <div style="display:flex; justify-content:center; gap:24px; font-size:13px; color:#4a4f34; margin-top:4px;">
+          <a href="mailto:info@jstudios.shop" style="color:#4a4f34; text-decoration:none; border-bottom:1px solid #4a4f34;" style-hover="color:#223a5e; border-color:#223a5e;">info@jstudios.shop</a>
+          <a href="https://wa.me/447888781532" style="color:#4a4f34; text-decoration:none; border-bottom:1px solid #4a4f34;" style-hover="color:#223a5e; border-color:#223a5e;">WhatsApp +44 7888 781532</a>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:16px; text-align:left;">
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <label style="font-size:12px; letter-spacing:1px; text-transform:uppercase; color:#4a4f34;">Name</label>
+          <input type="text" placeholder="Your name" style="padding:12px 14px; border:1px solid #DED2BC; background:#FBF8F1; font-family:'Jost',sans-serif; font-size:14px; color:#2C2A21;">
+        </div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <label style="font-size:12px; letter-spacing:1px; text-transform:uppercase; color:#4a4f34;">Email</label>
+          <input type="email" placeholder="you@email.com" style="padding:12px 14px; border:1px solid #DED2BC; background:#FBF8F1; font-family:'Jost',sans-serif; font-size:14px; color:#2C2A21;">
+        </div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <label style="font-size:12px; letter-spacing:1px; text-transform:uppercase; color:#4a4f34;">Which painting?</label>
+          <input type="text" placeholder="e.g. Candles" style="padding:12px 14px; border:1px solid #DED2BC; background:#FBF8F1; font-family:'Jost',sans-serif; font-size:14px; color:#2C2A21;">
+        </div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <label style="font-size:12px; letter-spacing:1px; text-transform:uppercase; color:#4a4f34;">Message</label>
+          <textarea rows="4" placeholder="Tell me a little about what you're looking for..." style="padding:12px 14px; border:1px solid #DED2BC; background:#FBF8F1; font-family:'Jost',sans-serif; font-size:14px; color:#2C2A21; resize:vertical;"></textarea>
+        </div>
+        <button style="margin-top:6px; padding:14px 34px; background:#3F4A2A; color:#F1EBE0; border:none; font-size:13px; letter-spacing:2px; text-transform:uppercase; cursor:pointer;" style-hover="background:#33401f;">Send Inquiry</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background:#3F4A2A; color:#EDE6D6; padding:32px 48px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+    <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:18px; color:#F1EBE0;">S. Chontow</div>
+    <div style="font-size:12px; letter-spacing:1px; color:#C9C4A8;">© 2026 S. Chontow. All rights reserved.</div>
+    <div style="display:flex; gap:24px;">
+      <a href="#" style="font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:#EDE6D6; text-decoration:underline;" style-hover="color:#F1EBE0;">Instagram</a>
+      <a href="mailto:info@jstudios.shop" style="font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:#EDE6D6; text-decoration:underline;" style-hover="color:#F1EBE0;">Email</a>
+      <a href="https://wa.me/447888781532" style="font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:#EDE6D6; text-decoration:underline;" style-hover="color:#F1EBE0;">WhatsApp</a>
+    </div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}}">
+class Component extends DCLogic {
+  renderVals() {
+    const paintings = [
+      { title: "Home", price: "$1,190", medium: "Oil on canvas", size: "90 × 90 cm", description: "We leave our dwelling place and feel right at home. A constant reminder of where the heart is.", sold: false, src: "assets/paintings/boy-with-apple.png" },
+      { title: "Candles", price: "$1,070", medium: "Oil on canvas", size: "70 × 100 cm", description: "A moment stamped on every Jewish child's soul - on display.", sold: false, src: "assets/paintings/shabbat-candles.png" },
+      { title: "Light", price: "$1,360", medium: "Oil on canvas", size: "120 × 80 cm", description: "For 3000 years a nation one eternal light still glowing.", sold: true, src: "assets/paintings/boys-reading.png" },
+      { title: "Beloved", price: "$6,000", medium: "Oil on canvas", size: "120 × 80 cm", description: "A vine, a rose, a dear The Song of Songs weaves strokes of love and romance soon to burst forth!", sold: false, src: "assets/paintings/third-temple.png" },
+      { title: "Honeycomb", price: "$810", medium: "Oil & gold leaf on canvas", size: "50 × 50 cm", description: "Many generations - one message.", sold: false, src: "assets/paintings/father-son-torah.png" },
+      { title: "Triumph", price: "$1,180", medium: "Oil on canvas", size: "100 × 80 cm", description: "David didn't live a life of tranquility but he never gave up. The clash of colour, waves and styles, with the Lion of Judah looking on.", sold: false, src: "assets/paintings/lion-of-judah.png" },
+      { title: "Journey", price: "$1,500", medium: "Oil on canvas", size: "120 × 80 cm", description: "Its not about where we start it's where we end. Each one of us has their unique story, its easy when you have the full picture.", sold: false, src: "assets/paintings/wave-of-nations.png" },
+      { title: "Direction", price: "$830", medium: "Oil on canvas", size: "80 × 60 cm", description: "We might not have a home but we know our way there. ", sold: false, src: "assets/paintings/boy-with-torah.png" },
+      { title: "Service", price: "$990", medium: "Oil on canvas", size: "70 × 90 cm", description: "Ready to roar \"Hineyni\".", sold: false, src: "assets/paintings/kingdom-of-creation.png" }
+    ].map((p, i) => {
+      const num = parseFloat(p.price.replace(/[^0-9.]/g, ""));
+      const salePrice = "$" + Math.round(num / 2).toLocaleString("en-US");
+      return { ...p, slotId: "painting-" + i, src: p.src || "", salePrice };
+    });
+
+    const hoverMap = {
+      "shabbat-candles.png": "assets/hover/shabbat-candles-hover.png",
+      "boys-reading.png": "assets/hover/boys-reading-hover.png",
+      "third-temple.png": "assets/hover/third-temple-hover.png",
+      "father-son-torah.png": "assets/hover/father-son-torah-hover.png",
+      "lion-of-judah.png": "assets/hover/lion-of-judah-hover.png",
+      "wave-of-nations.png": "assets/hover/wave-of-nations-hover.png",
+      "boy-with-torah.png": "assets/hover/boy-with-torah-hover.png"
+    };
+    paintings.forEach(p => { p.hoverSrc = hoverMap[p.src.split("/").pop()] || ""; });
+
+    const featuredTitles = { "boy-with-apple.png": "Innocence", "shabbat-candles.png": "Whispers of Hope", "boys-reading.png": "Stories by Light", "third-temple.png": "Beloved", "father-son-torah.png": "Teach Me", "lion-of-judah.png": "Be Strong" };
+    const featured = paintings.filter(p => featuredTitles[p.src.split("/").pop()]).map(p => ({ title: featuredTitles[p.src.split("/").pop()], src: p.src, hoverSrc: p.hoverSrc }));
+
+    return { paintings, featured };
+  }
+}
+
+</script>
+</body>
+</html>
