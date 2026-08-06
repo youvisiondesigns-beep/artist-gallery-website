@@ -794,19 +794,26 @@
 
       nav {
         padding: 12px 16px;
-        flex-direction: column;
-        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
       }
 
       nav .logo {
         height: 40px;
+        flex-basis: 100%;
       }
 
       nav .nav-links {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 16px;
+        gap: 10px;
         font-size: 11px;
+      }
+
+      nav .inquire-btn {
+        padding: 8px 14px;
+        font-size: 10px;
       }
 
       .hero {
