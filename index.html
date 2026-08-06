@@ -928,6 +928,22 @@
     </div>
   </section>
 
+  <!-- FEATURED PAINTINGS -->
+  <section class="featured-section">
+    <div class="section-header">
+      <h2>Featured Paintings</h2>
+      <div class="dot-divider">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+    <div class="gallery-grid" id="featured-grid"></div>
+    <div style="display: flex; justify-content: center;">
+      <a href="#gallery" class="view-gallery-btn">View Full Gallery</a>
+    </div>
+  </section>
+
   <!-- ABOUT -->
   <section id="about" class="about">
     <div class="about-grid">
@@ -1118,6 +1134,22 @@
       }
     ];
 
+    // Render featured paintings
+    function renderFeatured() {
+      const grid = document.getElementById('featured-grid');
+      const featuredTitles = ['Home', 'Journey', 'Service'];
+      const featured = paintingsData.filter(p => featuredTitles.includes(p.title));
+      grid.innerHTML = featured.map(p => `
+        <a href="#gallery" class="gallery-item">
+          <div class="gallery-item-image">
+            <img src="${p.src}" alt="${p.title}">
+            ${p.hoverSrc ? `<img src="${p.hoverSrc}" alt="${p.title}, shown in a room" class="gallery-item-hover">` : ''}
+          </div>
+          <div class="gallery-item-title">${p.title}</div>
+        </a>
+      `).join('');
+    }
+
     // Render all paintings
     function renderPaintings() {
       const grid = document.getElementById('paintings-grid');
@@ -1164,6 +1196,7 @@
 
     // Initialize on page load
     document.addEventListener('DOMContentLoaded', function() {
+      renderFeatured();
       renderPaintings();
     });
 
