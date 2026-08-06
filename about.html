@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Sarah Chontow | Artist Biography</title>
+  <meta name="description" content="Learn about Sarah Chontow, an artist creating original paintings inspired by Jewish life, family, and faith. Discover her process and artistic inspiration.">
+  <meta name="keywords" content="Sarah Chontow, artist biography, oil paintings, artistic process">
+  <meta name="author" content="Sarah Chontow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Caveat:wght@500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #F1EBE0;
+      color: #2C2A21;
+      font-family: 'Jost', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* NAVIGATION */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(241, 235, 224, 0.94);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid #DED2BC;
+    }
+
+    .logo {
+      height: 45px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #2C2A21;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #3F4A2A;
+    }
+
+    .inquire-btn {
+      padding: 10px 16px;
+      background: #3F4A2A;
+      color: #F1EBE0;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .inquire-btn:hover {
+      background: #223a5e;
+    }
+
+    /* MAIN CONTENT */
+    main {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 80px 48px;
+    }
+
+    .about-container {
+      display: flex;
+      flex-direction: column;
+      gap: 100px;
+    }
+
+    .about-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-section.reverse {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .about-section.reverse .about-image-block {
+      order: -1;
+    }
+
+    .about-text-block {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .about-text-block h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 500;
+      color: #2C2A21;
+      margin: 0;
+    }
+
+    .about-text-block p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #6b6a5c;
+      margin: 0;
+    }
+
+    .about-text-block p + p {
+      margin-top: 12px;
+    }
+
+    .divider {
+      width: 36px;
+      height: 1px;
+      background: #3F4A2A;
+    }
+
+    .about-image-block {
+      width: 100%;
+      aspect-ratio: 1;
+      overflow: hidden;
+    }
+
+    .about-image-block img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #E7DFCD;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #3F4A2A;
+      color: #EDE6D6;
+      padding: 32px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: #F1EBE0;
+    }
+
+    .footer-copyright {
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: #C9C4A8;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #EDE6D6;
+      text-decoration: underline;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #F1EBE0;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav {
+        padding: 12px 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      nav .logo {
+        height: 40px;
+        flex-basis: 100%;
+      }
+
+      nav .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        font-size: 11px;
+      }
+
+      nav .inquire-btn {
+        padding: 8px 14px;
+        font-size: 10px;
+      }
+
+      main {
+        padding: 50px 24px;
+      }
+
+      .about-section,
+      .about-section.reverse {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .about-section.reverse .about-image-block {
+        order: 0;
+      }
+
+      .about-text-block h2 {
+        font-size: 24px;
+      }
+
+      .about-container {
+        gap: 60px;
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+        padding: 24px 16px;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="index.html"><img src="project/assets/logo-green.png" alt="S. Chontow" class="logo"></a>
+    <div class="nav-links">
+      <a href="index.html#hero">Home</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#gallery">Gallery</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <a href="index.html#contact" class="inquire-btn">Inquire</a>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <div class="about-container">
+      <div class="about-section">
+        <div class="about-text-block">
+          <h2>About Sarah</h2>
+          <div class="divider"></div>
+          <p>I've loved painting for as long as I can remember. What began as a childhood passion became a lifelong way of exploring ideas, emotion and colour.</p>
+          <p>Inspired by Jewish life, family and faith, I create original paintings that combine realism with expressive, abstract brushwork. Working with acrylic, ink and oil, I aim to capture moments that feel joyful, meaningful and full of life.</p>
+          <p>Every painting is created by hand in my studio in Israel. My hope is that each piece brings warmth, beauty and a sense of connection to the homes it becomes part of.</p>
+        </div>
+        <div class="about-image-block">
+          <img src="project/assets/about/artist-portrait.png" alt="Sarah creating paintings in her studio">
+        </div>
+      </div>
+
+      <div class="about-section reverse">
+        <div class="about-image-block">
+          <img src="project/assets/about/brush-strokes.png" alt="Close-up of paintbrush creating expressive brushstrokes">
+        </div>
+        <div class="about-text-block">
+          <h2>My Process</h2>
+          <div class="divider"></div>
+          <p>I build each painting in layers, beginning with acrylic and ink before adding oil to create richness, depth and detail. I enjoy balancing realism with expressive brushwork, allowing the paint itself to become part of the story.</p>
+        </div>
+      </div>
+
+      <div class="about-section">
+        <div class="about-text-block">
+          <h2>What Inspires Me</h2>
+          <div class="divider"></div>
+          <p>Jewish life is full of beautiful moments that deserve to be remembered—family, tradition, celebration, resilience and hope. Those moments inspire my work, but I also want each painting to speak to anyone who connects with beauty, emotion and storytelling.</p>
+        </div>
+        <div class="about-image-block">
+          <img src="project/assets/about/painting-closeup.png" alt="Close-up detail of a finished oil painting">
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">S. Chontow</div>
+    <div class="footer-links">
+      <a href="mailto:info@jstudios.shop">Email</a>
+      <a href="https://wa.me/447888781532">WhatsApp</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <div class="footer-copyright">© 2026 Sarah Chontow. All rights reserved.</div>
+  </footer>
+</body>
+</html>

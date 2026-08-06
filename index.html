@@ -353,52 +353,26 @@
       padding: 100px 48px;
     }
 
-    .about-container {
-      max-width: 1320px;
+    .about-grid {
+      max-width: 1300px;
       margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 80px;
-    }
-
-    .about-section {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
+      grid-template-columns: 0.85fr 1fr 0.75fr;
+      gap: 56px;
       align-items: center;
     }
 
-    .about-section.reverse {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .about-section.reverse .about-image-block {
-      order: -1;
-    }
-
-    .about-text-block {
+    .about-text {
       display: flex;
       flex-direction: column;
       gap: 16px;
     }
 
-    .about-text-block h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 32px;
-      font-weight: 500;
+    .about-label {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
       color: #2C2A21;
-      margin: 0;
-    }
-
-    .about-text-block p {
-      font-size: 14px;
-      line-height: 1.8;
-      color: #6b6a5c;
-      margin: 0;
-    }
-
-    .about-text-block p + p {
-      margin-top: 12px;
     }
 
     .divider {
@@ -407,22 +381,12 @@
       background: #3F4A2A;
     }
 
-    .divider-section {
-      height: 1px;
-      background: #DCD2B9;
-      margin: 40px 0;
-    }
-
-    .about-image-block {
-      width: 100%;
-      aspect-ratio: 1;
-      overflow: hidden;
-    }
-
-    .about-image-block img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .about-text p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #6b6a5c;
+      margin: 0;
+      max-width: 280px;
     }
 
     .story-link {
@@ -436,6 +400,36 @@
 
     .story-link:hover {
       color: #223a5e;
+    }
+
+    .about-image {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #E7DFCD;
+    }
+
+    .about-quote-box {
+      background: #DCD2B9;
+      padding: 40px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .about-quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 1.4;
+      color: #2C2A21;
+      margin: 0;
     }
 
     /* GALLERY */
@@ -496,9 +490,8 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      transform: scale(1.32);
-      transform-origin: center;
+      object-fit: contain;
+      background: #EDE6D6;
     }
 
     .painting-hover {
@@ -506,7 +499,8 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      background: #EDE6D6;
       opacity: 0;
       transition: opacity 0.45s ease;
       pointer-events: auto;
@@ -907,32 +901,6 @@
         padding: 40px 24px;
       }
 
-      .about {
-        padding: 60px 24px;
-      }
-
-      .about-container {
-        gap: 50px;
-      }
-
-      .about-section,
-      .about-section.reverse {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-
-      .about-section.reverse .about-image-block {
-        order: 0;
-      }
-
-      .about-text-block h2 {
-        font-size: 24px;
-      }
-
-      .divider-section {
-        margin: 30px 0;
-      }
-
       .contact {
         padding: 60px 24px;
       }
@@ -1010,43 +978,22 @@
 
   <!-- ABOUT -->
   <section id="about" class="about">
-    <div class="about-container">
-      <div class="about-section">
-        <div class="about-text-block">
-          <h2>About Sarah</h2>
-          <div class="divider"></div>
-          <p>I've loved painting for as long as I can remember. What began as a childhood passion became a lifelong way of exploring ideas, emotion and colour.</p>
-          <p>Inspired by Jewish life, family and faith, I create original paintings that combine realism with expressive, abstract brushwork. Working with acrylic, ink and oil, I aim to capture moments that feel joyful, meaningful and full of life.</p>
-          <p>Every painting is created by hand in my studio in Israel. My hope is that each piece brings warmth, beauty and a sense of connection to the homes it becomes part of.</p>
-        </div>
-        <div class="about-image-block">
-          <img src="project/assets/about/artist-portrait.png" alt="Sarah creating paintings in her studio">
-        </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="about-label">About the Artist</div>
+        <div class="divider"></div>
+        <p>I'm a self-taught artist painting from the heart. My work is inspired by faith, family, and the quiet, meaningful moments in Jewish life.</p>
+        <a href="about.html" class="story-link">read my story →</a>
       </div>
-
-      <div class="divider-section"></div>
-
-      <div class="about-section reverse">
-        <div class="about-image-block">
-          <img src="project/assets/about/brush-strokes.png" alt="Close-up of paintbrush creating expressive brushstrokes">
-        </div>
-        <div class="about-text-block">
-          <h2>My Process</h2>
-          <div class="divider"></div>
-          <p>I build each painting in layers, beginning with acrylic and ink before adding oil to create richness, depth and detail. I enjoy balancing realism with expressive brushwork, allowing the paint itself to become part of the story.</p>
-        </div>
+      <div class="about-image">
+        <img src="project/assets/about/artist-portrait.png" alt="Sarah painting in her studio">
       </div>
-
-      <div class="divider-section"></div>
-
-      <div class="about-section">
-        <div class="about-text-block">
-          <h2>What Inspires Me</h2>
-          <div class="divider"></div>
-          <p>Jewish life is full of beautiful moments that deserve to be remembered—family, tradition, celebration, resilience and hope. Those moments inspire my work, but I also want each painting to speak to anyone who connects with beauty, emotion and storytelling.</p>
-        </div>
-        <div class="about-image-block">
-          <img src="project/assets/about/painting-closeup.png" alt="Close-up detail of a finished oil painting">
+      <div class="about-quote-box">
+        <p class="about-quote">There is beauty in every story worth remembering.</p>
+        <div class="dot-divider">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
         </div>
       </div>
     </div>
