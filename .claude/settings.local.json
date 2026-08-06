@@ -3,7 +3,8 @@
     "allow": [
       "Bash(git init *)",
       "Bash(git add *)",
-      "Bash(git commit *)"
+      "Bash(git commit *)",
+      "Bash(cp \"/Users/sarahbamberger/Downloads/IMG_2672 2.HEIC\" \"/Users/sarahbamberger/Downloads/artist-gallery-website/project/assets/paintings/service.heic\")"
     ]
   }
 }

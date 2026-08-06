@@ -353,26 +353,52 @@
       padding: 100px 48px;
     }
 
-    .about-grid {
-      max-width: 1300px;
+    .about-container {
+      max-width: 1320px;
       margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+
+    .about-section {
       display: grid;
-      grid-template-columns: 0.85fr 1fr 0.75fr;
-      gap: 56px;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
       align-items: center;
     }
 
-    .about-text {
+    .about-section.reverse {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .about-section.reverse .about-image-block {
+      order: -1;
+    }
+
+    .about-text-block {
       display: flex;
       flex-direction: column;
       gap: 16px;
     }
 
-    .about-label {
-      font-size: 13px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+    .about-text-block h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 500;
       color: #2C2A21;
+      margin: 0;
+    }
+
+    .about-text-block p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #6b6a5c;
+      margin: 0;
+    }
+
+    .about-text-block p + p {
+      margin-top: 12px;
     }
 
     .divider {
@@ -381,12 +407,22 @@
       background: #3F4A2A;
     }
 
-    .about-text p {
-      font-size: 14px;
-      line-height: 1.8;
-      color: #6b6a5c;
-      margin: 0;
-      max-width: 280px;
+    .divider-section {
+      height: 1px;
+      background: #DCD2B9;
+      margin: 40px 0;
+    }
+
+    .about-image-block {
+      width: 100%;
+      aspect-ratio: 1;
+      overflow: hidden;
+    }
+
+    .about-image-block img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .story-link {
@@ -400,35 +436,6 @@
 
     .story-link:hover {
       color: #223a5e;
-    }
-
-    .about-image {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      overflow: hidden;
-    }
-
-    .about-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .about-quote-box {
-      background: #DCD2B9;
-      padding: 40px 30px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .about-quote {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 24px;
-      line-height: 1.4;
-      color: #2C2A21;
-      margin: 0;
     }
 
     /* GALLERY */
@@ -900,6 +907,32 @@
         padding: 40px 24px;
       }
 
+      .about {
+        padding: 60px 24px;
+      }
+
+      .about-container {
+        gap: 50px;
+      }
+
+      .about-section,
+      .about-section.reverse {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .about-section.reverse .about-image-block {
+        order: 0;
+      }
+
+      .about-text-block h2 {
+        font-size: 24px;
+      }
+
+      .divider-section {
+        margin: 30px 0;
+      }
+
       .contact {
         padding: 60px 24px;
       }
@@ -937,7 +970,7 @@
 
   <!-- HERO -->
   <section id="hero" class="hero">
-    <img src="project/assets/hero-field.png" alt="Sarah painting at her easel in a misty field">
+    <img src="project/assets/hero.png" alt="Sarah painting at her easel in a misty field">
     <div class="hero-content">
       <h1>Sarah Chontow</h1>
       <p>Original paintings inspired by Jewish life, family and colour.</p>
@@ -977,22 +1010,43 @@
 
   <!-- ABOUT -->
   <section id="about" class="about">
-    <div class="about-grid">
-      <div class="about-text">
-        <div class="about-label">About the Artist</div>
-        <div class="divider"></div>
-        <p>I'm a self-taught artist painting from the heart. My work is inspired by faith, family, and the quiet, meaningful moments in Jewish life.</p>
-        <a href="#gallery" class="story-link">read my story →</a>
+    <div class="about-container">
+      <div class="about-section">
+        <div class="about-text-block">
+          <h2>About Sarah</h2>
+          <div class="divider"></div>
+          <p>I've loved painting for as long as I can remember. What began as a childhood passion became a lifelong way of exploring ideas, emotion and colour.</p>
+          <p>Inspired by Jewish life, family and faith, I create original paintings that combine realism with expressive, abstract brushwork. Working with acrylic, ink and oil, I aim to capture moments that feel joyful, meaningful and full of life.</p>
+          <p>Every painting is created by hand in my studio in Israel. My hope is that each piece brings warmth, beauty and a sense of connection to the homes it becomes part of.</p>
+        </div>
+        <div class="about-image-block">
+          <img src="project/assets/about/artist-portrait.png" alt="Sarah creating paintings in her studio">
+        </div>
       </div>
-      <div class="about-image">
-        <img src="project/assets/artist-painting-garden.png" alt="Sarah painting in her garden studio">
+
+      <div class="divider-section"></div>
+
+      <div class="about-section reverse">
+        <div class="about-image-block">
+          <img src="project/assets/about/brush-strokes.png" alt="Close-up of paintbrush creating expressive brushstrokes">
+        </div>
+        <div class="about-text-block">
+          <h2>My Process</h2>
+          <div class="divider"></div>
+          <p>I build each painting in layers, beginning with acrylic and ink before adding oil to create richness, depth and detail. I enjoy balancing realism with expressive brushwork, allowing the paint itself to become part of the story.</p>
+        </div>
       </div>
-      <div class="about-quote-box">
-        <p class="about-quote">There is beauty in every story worth remembering.</p>
-        <div class="dot-divider">
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
+
+      <div class="divider-section"></div>
+
+      <div class="about-section">
+        <div class="about-text-block">
+          <h2>What Inspires Me</h2>
+          <div class="divider"></div>
+          <p>Jewish life is full of beautiful moments that deserve to be remembered—family, tradition, celebration, resilience and hope. Those moments inspire my work, but I also want each painting to speak to anyone who connects with beauty, emotion and storytelling.</p>
+        </div>
+        <div class="about-image-block">
+          <img src="project/assets/about/painting-closeup.png" alt="Close-up detail of a finished oil painting">
         </div>
       </div>
     </div>
@@ -1048,102 +1102,6 @@
     const paintingsData = [
       {
         id: 1,
-        title: "Home",
-        price: "$1,190",
-        salePrice: "$893",
-        medium: "Oil on canvas",
-        size: "90 × 90 cm",
-        description: "We leave our dwelling place and feel right at home. A constant reminder of where the heart is.",
-        sold: false,
-        src: "project/assets/paintings/boy-with-apple.png",
-        hoverSrc: ""
-      },
-      {
-        id: 2,
-        title: "Candles",
-        price: "$1,070",
-        salePrice: "$803",
-        medium: "Oil on canvas",
-        size: "70 × 100 cm",
-        description: "A moment stamped on every Jewish child's soul - on display.",
-        sold: false,
-        src: "project/assets/paintings/shabbat-candles.png",
-        hoverSrc: "project/assets/hover/shabbat-candles-hover.png"
-      },
-      {
-        id: 3,
-        title: "Light",
-        price: "$1,360",
-        salePrice: "$1,020",
-        medium: "Oil on canvas",
-        size: "120 × 80 cm",
-        description: "For 3000 years a nation one eternal light still glowing.",
-        sold: true,
-        src: "project/assets/paintings/boys-reading.png",
-        hoverSrc: "project/assets/hover/boys-reading-hover.png"
-      },
-      {
-        id: 4,
-        title: "Beloved",
-        price: "$6,000",
-        salePrice: "$4,500",
-        medium: "Oil on canvas",
-        size: "120 × 80 cm",
-        description: "A vine, a rose, a dear The Song of Songs weaves strokes of love and romance soon to burst forth!",
-        sold: false,
-        src: "project/assets/paintings/third-temple.png",
-        hoverSrc: "project/assets/hover/third-temple-hover.png"
-      },
-      {
-        id: 5,
-        title: "Honeycomb",
-        price: "$810",
-        salePrice: "$608",
-        medium: "Oil & gold leaf on canvas",
-        size: "50 × 50 cm",
-        description: "Many generations - one message.",
-        sold: false,
-        src: "project/assets/paintings/father-son-torah.png",
-        hoverSrc: "project/assets/hover/father-son-torah-hover.png"
-      },
-      {
-        id: 6,
-        title: "Triumph",
-        price: "$1,180",
-        salePrice: "$885",
-        medium: "Oil on canvas",
-        size: "100 × 80 cm",
-        description: "David didn't live a life of tranquility but he never gave up. The clash of colour, waves and styles, with the Lion of Judah looking on.",
-        sold: false,
-        src: "project/assets/paintings/lion-of-judah.png",
-        hoverSrc: "project/assets/hover/lion-of-judah-hover.png"
-      },
-      {
-        id: 7,
-        title: "Journey",
-        price: "$1,500",
-        salePrice: "$1,125",
-        medium: "Oil on canvas",
-        size: "120 × 80 cm",
-        description: "Its not about where we start it's where we end. Each one of us has their unique story, its easy when you have the full picture.",
-        sold: false,
-        src: "project/assets/paintings/wave-of-nations.png",
-        hoverSrc: "project/assets/hover/wave-of-nations-hover.png"
-      },
-      {
-        id: 8,
-        title: "Direction",
-        price: "$830",
-        salePrice: "$623",
-        medium: "Oil on canvas",
-        size: "80 × 60 cm",
-        description: "We might not have a home but we know our way there.",
-        sold: false,
-        src: "project/assets/paintings/boy-with-torah.png",
-        hoverSrc: "project/assets/hover/boy-with-torah-hover.png"
-      },
-      {
-        id: 9,
         title: "Service",
         price: "$990",
         salePrice: "$743",
@@ -1151,8 +1109,116 @@
         size: "70 × 90 cm",
         description: "Ready to roar \"Hineyni\".",
         sold: false,
-        src: "project/assets/paintings/service.heic",
-        hoverSrc: ""
+        src: "project/assets/paintings/1.png",
+        hoverSrc: "project/assets/hover/1-hover.png"
+      },
+      {
+        id: 2,
+        title: "Journey",
+        price: "$1,500",
+        salePrice: "$1,125",
+        medium: "Oil on canvas",
+        size: "120 × 80 cm",
+        description: "Its not about where we start it's where we end. Each one of us has their unique story, its easy when you have the full picture.",
+        sold: false,
+        src: "project/assets/paintings/2.png",
+        hoverSrc: "project/assets/hover/2-hover.png"
+      },
+      {
+        id: 3,
+        title: "Direction",
+        price: "$830",
+        salePrice: "$623",
+        medium: "Oil on canvas",
+        size: "80 × 60 cm",
+        description: "We might not have a home but we know our way there.",
+        sold: false,
+        src: "project/assets/paintings/3.png",
+        hoverSrc: "project/assets/hover/3-hover.png"
+      },
+      {
+        id: 4,
+        title: "Triumph",
+        price: "$1,180",
+        salePrice: "$885",
+        medium: "Oil on canvas",
+        size: "100 × 80 cm",
+        description: "David didn't live a life of tranquility but he never gave up. The clash of colour, waves and styles, with the Lion of Judah looking on.",
+        sold: false,
+        src: "project/assets/paintings/4.png",
+        hoverSrc: "project/assets/hover/4-hover.png"
+      },
+      {
+        id: 5,
+        title: "Light",
+        price: "$1,360",
+        salePrice: "$1,020",
+        medium: "Oil on canvas",
+        size: "120 × 80 cm",
+        description: "For 3000 years a nation one eternal light still glowing.",
+        sold: false,
+        src: "project/assets/paintings/5.png",
+        hoverSrc: "project/assets/hover/5-hover.png"
+      },
+      {
+        id: 6,
+        title: "Candles",
+        price: "$1,070",
+        salePrice: "$803",
+        medium: "Oil on canvas",
+        size: "70 × 100 cm",
+        description: "A moment stamped on every Jewish child's soul - on display.",
+        sold: false,
+        src: "project/assets/paintings/6.png",
+        hoverSrc: "project/assets/hover/6-hover.png"
+      },
+      {
+        id: 7,
+        title: "Beloved",
+        price: "$6,000",
+        salePrice: "$4,500",
+        medium: "Oil on canvas",
+        size: "120 × 80 cm",
+        description: "A vine, a rose, a dear The Song of Songs weaves strokes of love and romance soon to burst forth!",
+        sold: false,
+        src: "project/assets/paintings/7.png",
+        hoverSrc: "project/assets/hover/7-hover.png"
+      },
+      {
+        id: 8,
+        title: "Innocence",
+        price: "$1,133",
+        salePrice: "$850",
+        medium: "Oil on canvas",
+        size: "60 × 60 cm",
+        description: "Beauty in simplicity.",
+        sold: false,
+        src: "project/assets/paintings/8.png",
+        hoverSrc: "project/assets/hover/8-hover.png"
+      },
+      {
+        id: 9,
+        title: "Honeycomb",
+        price: "$810",
+        salePrice: "$608",
+        medium: "Oil & gold leaf on canvas",
+        size: "50 × 50 cm",
+        description: "Many generations - one message.",
+        sold: false,
+        src: "project/assets/paintings/9.png",
+        hoverSrc: "project/assets/hover/9-hover.png"
+      },
+      {
+        id: 10,
+        title: "Home",
+        price: "$1,190",
+        salePrice: "$893",
+        medium: "Oil on canvas",
+        size: "90 × 90 cm",
+        description: "We leave our dwelling place and feel right at home. A constant reminder of where the heart is.",
+        sold: false,
+        src: "project/assets/paintings/10.png",
+        hoverSrc: "project/assets/hover/10-hover.png"
       }
     ];
 
