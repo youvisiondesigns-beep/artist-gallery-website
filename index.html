@@ -1195,10 +1195,15 @@
     });
 
     // Initialize on page load
-    document.addEventListener('DOMContentLoaded', function() {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        renderFeatured();
+        renderPaintings();
+      });
+    } else {
       renderFeatured();
       renderPaintings();
-    });
+    }
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
