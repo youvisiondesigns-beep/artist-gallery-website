@@ -30,6 +30,67 @@
   <!-- Vercel Analytics -->
   <script defer src="https://cdn.vercel-analytics.com/v1/script.js"></script>
 
+  <!-- Custom Analytics Tracking -->
+  <script>
+    window.analyticsData = {
+      sessionId: Math.random().toString(36).substr(2, 9),
+      referrer: document.referrer || 'direct',
+      userAgent: navigator.userAgent.substring(0, 100),
+      visitTimestamp: new Date().toISOString(),
+      paintingsViewed: [],
+      pageScrollDepth: 0
+    };
+
+    function trackPaintingView(paintingId, title, price) {
+      const event = {
+        paintingId,
+        title,
+        price,
+        viewedAt: new Date().toISOString()
+      };
+      window.analyticsData.paintingsViewed.push(event);
+
+      if (window.va) {
+        window.va.event('painting_viewed', {
+          painting_title: title,
+          painting_id: paintingId,
+          painting_price: price
+        });
+      }
+      console.log('📸 Viewed:', title, `(#${paintingId}) - $${price}`);
+    }
+
+    function trackPageEvent(eventName, details = {}) {
+      if (window.va) {
+        window.va.event(eventName, details);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const ref = document.referrer;
+      if (ref) {
+        trackPageEvent('visitor_referrer', { source: ref });
+        console.log('🔗 Visitor from:', ref);
+      } else {
+        trackPageEvent('visitor_direct', { source: 'direct' });
+      }
+
+      document.addEventListener('scroll', () => {
+        const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        window.analyticsData.pageScrollDepth = Math.max(window.analyticsData.pageScrollDepth, Math.round(scrolled));
+      });
+    });
+
+    window.addEventListener('beforeunload', () => {
+      if (window.analyticsData.paintingsViewed.length > 0) {
+        trackPageEvent('session_summary', {
+          paintings_viewed: window.analyticsData.paintingsViewed.length,
+          max_scroll_depth: window.analyticsData.pageScrollDepth + '%'
+        });
+      }
+    });
+  </script>
+
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
@@ -1155,7 +1216,7 @@
       const featuredTitles = ['Home', 'Journey', 'Service'];
       const featured = paintingsData.filter(p => featuredTitles.includes(p.title));
       grid.innerHTML = featured.map(p => `
-        <a href="#gallery" class="gallery-item">
+        <a href="#gallery" class="gallery-item" onclick="trackPaintingView(${p.id}, '${p.title}', '${p.salePrice}')">
           <div class="gallery-item-image">
             <img src="${p.src}" alt="${p.title}">
             ${p.hoverSrc ? `<img src="${p.hoverSrc}" alt="${p.title}, shown in a room" class="gallery-item-hover">` : ''}
@@ -1169,7 +1230,7 @@
     function renderPaintings() {
       const grid = document.getElementById('paintings-grid');
       grid.innerHTML = paintingsData.map(p => `
-        <div class="painting-card">
+        <div class="painting-card" onclick="trackPaintingView(${p.id}, '${p.title}', '${p.salePrice}')">
           <div class="painting-image">
             <img src="${p.src}" alt="${p.title}">
             ${p.hoverSrc ? `<img src="${p.hoverSrc}" alt="${p.title}, shown in a room" class="painting-hover">` : ''}
@@ -1185,7 +1246,7 @@
             </div>
             <div class="painting-specs">${p.medium} · ${p.size}</div>
             <p class="painting-description">${p.description}</p>
-            <a href="#contact" class="inquire-link">Inquire</a>
+            <a href="#contact" class="inquire-link" onclick="event.stopPropagation()">Inquire</a>
           </div>
         </div>
       `).join('');

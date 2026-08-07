@@ -24,6 +24,46 @@
   <!-- Vercel Analytics -->
   <script defer src="https://cdn.vercel-analytics.com/v1/script.js"></script>
 
+  <!-- Custom Analytics Tracking -->
+  <script>
+    window.analyticsData = {
+      sessionId: Math.random().toString(36).substr(2, 9),
+      referrer: document.referrer || 'direct',
+      userAgent: navigator.userAgent.substring(0, 100),
+      visitTimestamp: new Date().toISOString(),
+      pageScrollDepth: 0
+    };
+
+    function trackPageEvent(eventName, details = {}) {
+      if (window.va) {
+        window.va.event(eventName, details);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const ref = document.referrer;
+      trackPageEvent('page_view', { page: 'about' });
+      if (ref) {
+        trackPageEvent('visitor_referrer', { source: ref });
+        console.log('🔗 Visitor from:', ref);
+      } else {
+        trackPageEvent('visitor_direct', { source: 'direct' });
+      }
+
+      document.addEventListener('scroll', () => {
+        const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        window.analyticsData.pageScrollDepth = Math.max(window.analyticsData.pageScrollDepth, Math.round(scrolled));
+      });
+    });
+
+    window.addEventListener('beforeunload', () => {
+      trackPageEvent('session_complete', {
+        page: 'about',
+        scroll_depth: window.analyticsData.pageScrollDepth + '%'
+      });
+    });
+  </script>
+
   <style>
     * {
       margin: 0;
