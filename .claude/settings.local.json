@@ -5,7 +5,8 @@
       "Bash(git add *)",
       "Bash(git commit *)",
       "Bash(cp \"/Users/sarahbamberger/Downloads/IMG_2672 2.HEIC\" \"/Users/sarahbamberger/Downloads/artist-gallery-website/project/assets/paintings/service.heic\")",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(npm i *)"
     ]
   }
 }
